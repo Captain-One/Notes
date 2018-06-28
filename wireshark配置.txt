@@ -1,0 +1,3 @@
+配置首选项里
+修改DLT-USE
+mac-lte-framed

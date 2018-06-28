@@ -1,0 +1,29 @@
+1.制作测试数字证书：
+makecert -r -pe -ss PrivateCertStore -n CN=Contoso.com(Test) xxx.cer
+
+2.修改INF文件并生成目录文件：
+在inf文件的[Version]节点最后增加：
+CatalogFile.NtAMD64 = xxx_AMD64.cat
+生成目录文件：
+Inf2cat.exe /driver:X:\xxxx\xxx\ /os:7_x64
+
+3.对cat文件签名：
+Signtool sign /a /v /s PrivateCertStore /n Contoso.com(Test) /t http://timestamp.verisign.com/scripts/timestamp.dll xxx_AMD64.cat
+
+4.注册测试数字证书：
+certmgr.exe /add xxx.cer /s /r localMachine root
+
+5.对驱动文件签名：
+Signtool sign /a /v /s PrivateCertStore /n Contoso.com(Test) /t http://timestamp.verisign.com/scripts/timestamp.dll xxxx.sys
+
+6.安装测试签名：
+拷贝.inf，.sys，.cat，.cer，certmgr.exe到目标同一个文件夹下，以管理员权限打开进入到目录，注册及打开测试模式（已打开测试模式不用再次打开），安装数字证书，更新驱动，重启电脑即可
+certmgr.exe /add xxx.cer /s /r localMachine root
+certmgr.exe /add xxx.cer /s /r localMachine trustedpublisher
+
+cd c:\windows\system32\
+bcdedit.exe /set TESTSIGNING ON
+
+
+原驱动路劲
+C:\software\Install_fold\New folder0601\driver\2-1
