@@ -1,0 +1,39 @@
+1.下载安装Samba服务器：
+sudo apt-get install samba-common
+sudo apt-get install system-config-samba cifs-utils
+
+2.添加sabam用户登录用，该用户需存在Ubuntu,不需要密码
+sudo useradd xxxx
+sudo smbpasswd -a xxxx   
+
+3.配置服务器
+sudo vi /etc/samba/smb.conf
+
+////////////////////////////
+[share] //任意名字
+path=/home/xx/xxxx  //共享的目录路径
+available = yes 
+browseable = yes 
+public = yes 
+writable = yes 
+valid users = xxxx  //Samba用户名 
+create mask = 0700 
+directory mask = 0700 
+force user = nobody 
+force group = nogroup
+////////////////////////////
+
+workgroup = WORKGROUP //和Windows的工作组名字一样
+
+usershare allow guests = no  //设置为no
+
+map to guest = bad user /注释掉
+
+4.重启服务器
+sudo /etc/init.d/samba restart
+
+
+samba服务器相关指令：
+sudo /etc/init.d/samba stop
+sudo /etc/init.d/samba start
+sudo /etc/init.d/samba restart
