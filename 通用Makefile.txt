@@ -1,0 +1,47 @@
+通用Makefile编写方法：
+1.几个常用的函数：
+wildcard *.c //找出所有的当前目录下所有.c文件
+notdir :去除路径
+patsubst:替换通配符
+
+通常用法：
+SRCS =  $(wildcard *.c)
+SRCS += $(wildcard xxx/yyy/*.c)
+
+DIR = $(notdir $(SRCS)) //去除路径
+OBJS = $(patsubst %.c,$(xx path)/%.o,$(DIR))
+
+//////////////////////////////////////
+VPATH = ./xx 
+VPATH +=./xx/yy  #指定路径
+
+BUILDDIR =  ./xxxx  #指定编译中中间生成文件存放目录
+
+CC = gcc  #指定编译器
+
+INCLUDE = -I. -I ./xx #指定头文件目录
+
+CCFLAGS = -g -Wall -O0   #指定编译的条件参数警告级别：-g 调试用 -Wall显示所有警告 -O0 编译优化等级
+CCFLAGS += -D RRC_API_TEST_CASE
+CCFLAGS += -D RRC_API_TEST_CASE_XML_PRINT  #指定编译的宏定义
+
+OUTPUT = main  #可执行目标文件
+
+all:$(OBJDIR) $(OUTPUT)   #指定需要生成的目标
+
+$(OBJDIR):    #该目标执行的操作
+    @echo create objects dir
+	mkdir -p $(OBJDIR)
+	
+$(OUTPUT):$(OBJS)  #该目标执行的操作
+	$(CC) $^ -o $@  #编译生成目标文件 $^：所有的依赖文件 $@：目标文件
+
+$(OBJDIR)/%.o:%.c  #编译生成.o文件 %.o:%.c：用目录下.c文件生成对应的.o文件 
+	$(CC) -c $< -o $@ $(CCFLAGS)   #$<：第一个依赖文件 :后面的第一个文件如 ff.o:ff.c a.c 则指ff.c
+
+clean:
+	rm -rf $(OBJDIR) $(OUTPUT)
+
+.PHONY:clean
+
+//////////////////////////////////////
