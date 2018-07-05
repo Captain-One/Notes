@@ -2,7 +2,7 @@
 sudo apt-get install samba-common
 sudo apt-get install system-config-samba cifs-utils
 
-2.添加sabam用户登录用，该用户需存在Ubuntu,不需要密码
+2.添加sabam用户登录用
 sudo useradd xxxx
 sudo smbpasswd -a xxxx   
 

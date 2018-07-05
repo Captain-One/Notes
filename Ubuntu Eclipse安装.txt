@@ -1,0 +1,52 @@
+Ubuntu Eclipse安装
+1.安装JDK
+2.安装Eclipse
+
+1.JDK安装
+解压安装包到 opt/jvm下
+配置JDK环境变量：
+sudo /etc/profile
+在最后添加：
+export JAVA_HOME=/opt/jvm/jdk1.8.0_121
+
+export JRE_HOME=${JAVA_HOME}/jre
+
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+
+export PATH=${JAVA_HOME}/bin:$PATH
+保存退出，查看是否安装成功
+先输入 source /etc/profile
+然后输入 java -version
+
+2.安装Eclipse
+解压安装包到opt目录
+进入到 /user/share/applications
+创建桌面图标：sudo vim eclipse.desktop
+添加如下内容
+[Desktop Entry]
+Encoding=UTF-8
+Name=Eclipse
+Comment=Eclipse
+Exec=/opt/eclipse-installer/eclipse-inst
+Icon=/opt/eclipse-installer/icon.xpm
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Application;Development;
+保存
+将该文件变为可执行文件：sudo chmod u+x eclipse.desktop
+将/user/share/applications的eclipse图标复制到桌面即可
+若启动失败说java环境变量有问题则注销一次即可
+启动即可安装想要的eclipse版本
+安装完后可删除安装包
+重新编辑eclipse.deskto文件，指向eclipse安装的路径eclipse保存
+[Desktop Entry]
+Encoding=UTF-8
+Name=Eclipse
+Comment=Eclipse
+Exec=/opt/eclipse-installer/eclipse-inst
+Icon=/opt/eclipse-installer/icon.xpm
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Application;Development;

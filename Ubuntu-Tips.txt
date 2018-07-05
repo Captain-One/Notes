@@ -1,0 +1,7 @@
+Ubuntu 16.04 sudo apt-get update 更新失败解决
+1.sudo pkill -KILL appstreamcli
+2.wget -P /tmp https://launchpad.net/ubuntu/+archive/primary/+files/appstream_0.9.4-1ubuntu1_amd64.deb https://launchpad.net/ubuntu/+archive/primary/+files/libappstream3_0.9.4-1ubuntu1_amd64.deb
+3.sudo dpkg -i /tmp/appstream_0.9.4-1ubuntu1_amd64.deb /tmp/libappstream3_0.9.4-1ubuntu1_amd64.deb
+
+VMware Tools没有自动启动的问题
+检查是否安装：sudo apt-get install open-vm-tools-desktop
