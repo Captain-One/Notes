@@ -31,6 +31,7 @@ map to guest = bad user /注释掉
 
 4.重启服务器
 sudo /etc/init.d/samba restart
+或者：sudo service smbd resetart
 
 
 samba服务器相关指令：
