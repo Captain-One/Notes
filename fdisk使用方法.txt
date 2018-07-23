@@ -1,0 +1,13 @@
+fdisk 使用
+
+查看本机所有磁盘
+sudo fdisk -l
+
+对具体的磁盘操作
+sudo fdisk /dev/sdxxx
+
+删除指定分区
+d
+
+格式化磁盘
+mkfs -t ext4 -c /dec/xxx
