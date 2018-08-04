@@ -12,3 +12,16 @@ GCC编译选项
 gcc hello.c libFOO.a
 gcc hello.c -L /home/hello -lFOO
 
+创建静态库和共享库
+先编译生成.o文件
+ar -r libxx.a xx1.o xx2.o
+即可生成静态库
+
+共享库
+先编译对象模块
+gcc -c -fpic xx1.c xx2.c
+
+-fpic表示对象模块可重定位，pic表示位置独立代码
+
+gcc -share xx1.o xx2.o -o libxx.so
+即可生成共享库
