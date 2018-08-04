@@ -1,0 +1,7 @@
+安装GMP库
+1. 下载https://gmplib.org/
+2. 安装m4软件包 sudo apt-get install build-essential m4
+3. ./configure --prefix=/usr  --enable-cxx
+4. make
+5. make check
+6. make install (sudo执行)

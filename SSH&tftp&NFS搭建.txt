@@ -1,0 +1,11 @@
+1.SSH服务器安装 openssh-server
+2.NFS服务器安装
+  1.安装NFS服务器：nfs-kernel-server
+  2.安装NFS客户端：nfs-common
+  3.启动服务：sudo /etc/init.d/nfs-kernel-server start
+  4.重启服务：sudo /etc/init.d/nfs-kernel-server restart
+ (sudo chown -R nobody /tftp-hpa)
+3.tftp服务器搭建
+  1.安装 tftpd-hpa tftp-hpa
+  2.修改配置文件：/etc/default/tftpd-hpa
+  3.启动服务：sudo service tftpd-hpa start 

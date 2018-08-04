@@ -1,0 +1,14 @@
+GCC编译选项
+-E 预处理文件
+-S 编译生成汇编
+-c 汇编生成.o文件(机器码)
+最后链接生成out文件
+-static 使用静态链接
+-g 产生调试信息
+-DFOO=BAR 定义宏FOO为BAR
+-ON  N指定优化等级
+库文件用法 libFOO.a/libFOO.so
+两种方法：直接使用库全名编译 or -L添加库路径 后使用-lFOO即可
+gcc hello.c libFOO.a
+gcc hello.c -L /home/hello -lFOO
+
