@@ -29,6 +29,9 @@ usershare allow guests = no  //设置为no
 
 map to guest = bad user /注释掉
 
+
+//可以直接使用sudo smbpasswd -a xxx 创建当前用户对应的samba用户
+
 4.重启服务器
 sudo /etc/init.d/samba restart
 或者：sudo service smbd resetart
