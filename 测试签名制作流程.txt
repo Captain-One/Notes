@@ -18,8 +18,8 @@ Signtool sign /a /v /s PrivateCertStore /n Contoso.com(Test) /t http://timestamp
 
 6.安装测试签名：
 拷贝.inf，.sys，.cat，.cer，certmgr.exe到目标同一个文件夹下，以管理员权限打开进入到目录，注册及打开测试模式（已打开测试模式不用再次打开），安装数字证书，更新驱动，重启电脑即可
-certmgr.exe /add xxx.cer /s /r localMachine root
-certmgr.exe /add xxx.cer /s /r localMachine trustedpublisher
+certmgr.exe /add L2_KS2_PCIE_Test.cer /s /r localMachine root
+certmgr.exe /add L2_KS2_PCIE_Test.cer /s /r localMachine trustedpublisher
 
 cd c:\windows\system32\
 bcdedit.exe /set TESTSIGNING ON
